@@ -10,9 +10,7 @@
 
 #pragma once
 
-#include <juce_dsp/juce_dsp.h>
-#include <juce_gui_basics/juce_gui_basics.h>
-using namespace juce;
+#include "../JuceLibraryCode/JuceHeader.h"
 
 //==============================================================================
 /*
