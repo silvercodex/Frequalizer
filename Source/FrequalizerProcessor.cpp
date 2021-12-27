@@ -97,11 +97,11 @@ AudioProcessorValueTreeState::ParameterLayout createParameterLayout()
                                                                     defaults [i].frequency,
                                                                     String(),
                                                                     AudioProcessorParameter::genericParameter,
-                                                                    [](float value, int) { return (value < 1000.0f) ?
+                                                                    [](float value, int) { return (value < 1000) ?
                                                                         String (value, 0) + " Hz" :
-                                                                        String (value / 1000.0f, 2) + " kHz"; },
+                                                                        String (value / 1000.0, 2) + " kHz"; },
                                                                     [](String text) { return text.endsWith(" kHz") ?
-                                                                        text.dropLastCharacters (4).getFloatValue() * 1000.0f :
+                                                                        text.dropLastCharacters (4).getFloatValue() * 1000.0 :
                                                                         text.dropLastCharacters (3).getFloatValue(); });
 
         auto qltyParameter = std::make_unique<AudioParameterFloat> (FrequalizerAudioProcessor::getQualityParamName (i),
@@ -480,7 +480,6 @@ void FrequalizerAudioProcessor::updateBand (const size_t index)
             case HighPass:
                 newCoefficients = dsp::IIR::Coefficients<float>::makeHighPass (sampleRate, bands [index].frequency, bands [index].quality);
                 break;
-            case LastFilterID:
             default:
                 break;
         }

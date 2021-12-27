@@ -53,7 +53,7 @@ public:
 
     //==============================================================================
     FrequalizerAudioProcessor();
-    ~FrequalizerAudioProcessor() override;
+    ~FrequalizerAudioProcessor();
 
     //==============================================================================
     void prepareToPlay (double newSampleRate, int newSamplesPerBlock) override;
